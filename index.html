@@ -1,71 +1,152 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>La Plume Nomade</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+
+  <!-- Fonts et Icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <img src="logo.png" alt="La Plume Nomade" height="40" />
-    <nav>
-      <a href="#">Les Cabines</a>
-      <a href="#">Menu</a>
-      <a href="#">Libraries</a>
-      <a href="#">Ateliers & Évènements</a>
-    </nav>
-    <button class="contact-button">Contacts →</button>
+
+<body id="top">
+
+  <!-- ===== NAVIGATION ===== -->
+  <header class="navbar" role="banner">
+    <div class="navbar-left">
+      <a href="#top" aria-label="Retour à l'accueil">
+        <img src="Photos/Logo1.png" alt="Logo La Plume Nomade" class="logo" />
+      </a>
+    </div>
+
+    <div class="navbar-right">
+      <div class="all-elements" id="navElements">
+        <nav class="nav-menu" role="navigation" aria-label="Menu principal">
+          <a href="#">Les Cabines</a>
+          <a href="#">Menu</a>
+          <a href="#">Librarie</a>
+        </nav>
+        <div class="nav-icons" aria-label="Icônes d'action">
+          <i class="fa-regular fa-heart" aria-hidden="true"></i>
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+        </div>
+        <button class="btn-contact" aria-label="Contact">
+          <span>Contact</span>
+        </button>
+      </div>
+
+      <div class="burger" id="burger" aria-label="Menu mobile" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav" aria-label="Menu mobile étendu"></div>
+    </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>La Plume Nomade</h1>
-      <p>Rien ne réchauffe autant qu’un bon mot et une boisson chaude.</p>
-      <button class="btn-primary">Explorer la librairie</button>
-    </div>
-    <img src="hero-image.jpg" alt="Illustration" width="400" />
-  </section>
+  <!-- ===== ENTÊTE PRINCIPALE ===== -->
+  <main role="main">
+    <section class="main-header">
+      <div class="header-left">
+        <h2>
+          Des cabines comme des portails,<br />
+          Des livres comme des clés,<br />
+          Des lecteurs comme des voyageurs,
+        </h2>
+      </div>
 
-  <section class="carousel-section">
-    <h2>Plonger dans un <strong>atelier</strong></h2>
-    <div class="cards">
-      <div class="card">
-        <img src="apaisee.jpg" alt="La Plume Apaisée" />
-        <div class="card-content">
-          <div class="card-title">La Plume Apaisée</div>
-          <div class="tags">
-            <div class="tag">Zen</div>
-            <div class="tag">Relaxation</div>
-            <div class="tag green">↓</div>
-          </div>
+      <div class="header-right">
+        <img src="Photos/Logo.png" alt="Logo de La Plume Nomade" class="header-logo" />
+      </div>
+    </section>
+
+    <!-- ===== SLOGAN & LIGNE ===== -->
+    <section class="slogan">
+      <p class="subheading">
+        <strong>Un monde, une ambiance, une évasion</strong>
+        <span class="underline" aria-hidden="true"></span>
+      </p>
+    </section>
+
+    <!-- ===== CABINES ===== -->
+    <section class="cabins" aria-label="Sélection de cabines thématiques">
+      <article class="cabin-card">
+        <img src="Photos/cabine1.jpg" alt="Cabine Apaisée">
+        <h3 class="green">La Plume Apaisée</h3>
+        <div class="tags">
+          <span class="tag">Zen</span>
+          <span class="tag">Relaxation</span>
+          <span class="icon"><i class="fa-solid fa-circle-down"></i></span>
+        </div>
+      </article>
+
+      <article class="cabin-card">
+        <img src="Photos/cabine2.jpg" alt="Cabine Soleil Levant">
+        <h3 class="red">La Plume du Soleil Levant</h3>
+        <div class="tags">
+          <span class="tag">Japon</span>
+          <span class="tag">Manga</span>
+          <span class="icon"><i class="fa-solid fa-circle-down"></i></span>
+        </div>
+      </article>
+
+      <article class="cabin-card">
+        <img src="Photos/cabine3.jpg" alt="Cabine Enquêtrice">
+        <h3>La Plume de l’Enquêtrice</h3>
+        <div class="tags">
+          <span class="tag">Détective</span>
+          <span class="tag">Vintage</span>
+          <span class="icon"><i class="fa-solid fa-circle-down"></i></span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- ===== PIED DE PAGE ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-content">
+      
+      <!-- Colonne 1 -->
+      <div class="footer-column">
+        <h4>La Plume Nomade</h4>
+        <p>Suivez-nous pour des escapades littéraires.</p>
+        <div class="footer-socials" aria-label="Réseaux sociaux">
+          <a href="https://www.facebook.com/Google" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/Google" target="_blank"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/google" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/google" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
         </div>
       </div>
-      <div class="card">
-        <img src="soleil-levant.jpg" alt="La Plume du Soleil Levant" />
-        <div class="card-content">
-          <div class="card-title">La Plume du Soleil Levant</div>
-          <div class="tags">
-            <div class="tag">Japon</div>
-            <div class="tag">Manga</div>
-            <div class="tag green">↓</div>
-          </div>
-        </div>
+
+      <!-- Colonne 2 -->
+      <div class="footer-column footer-logo">
+        <a href="#top" aria-label="Remonter en haut de la page">
+          <img src="Photos/Logo1.png" alt="Logo de La Plume Nomade">
+        </a>
       </div>
-      <div class="card">
-        <img src="ombre.jpg" alt="La Plume de l'Ombre" />
-        <div class="card-content">
-          <div class="card-title">La Plume de l'Ombre</div>
-          <div class="tags">
-            <div class="tag">Détective</div>
-            <div class="tag">Vintage</div>
-            <div class="tag green">↓</div>
-          </div>
+
+      <!-- Colonne 3 -->
+      <div class="footer-column">
+        <div class="footer-column1">
+          <h4>Newsletter</h4>
+          <form class="newsletter" aria-label="Formulaire d'inscription à la newsletter">
+            <input type="email" placeholder="Adresse email" aria-label="Adresse email">
+            <button type="submit" aria-label="Envoyer"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+          <p class="newsletter-caption">Voyagez par les mots, restez informé.</p>
         </div>
       </div>
     </div>
-  </section>
+
+    <div class="footer-bottom">
+      <p>© 2025 La Plume Nomade – Tous droits réservés</p>
+      <p>Mentions légales | Politique de confidentialité | CGU</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
 </body>
 </html>
