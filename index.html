@@ -1,2 +1,239 @@
-Introduction
-La Plume Nomade est une librairie-café unique à Rouen qui propose trois cabines immersives, chacune associant un univers littéraire à une expérience culinaire. Du Japon au bien-être en passant par l’univers policier, ces espaces thématiques offrent aux visiteurs un voyage culturel et sensoriel inédit où lecture et gastronomie se rencontrent.
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- SEO -->
+  <title>Accueil – La Plume Nomade | Cabines immersives & librairie</title>
+  <meta name="description" content="La Plume Nomade : cabines thématiques immersives, librairie et escapades littéraires. Découvrez nos ambiances et précommandez vos livres en ligne." />
+  <link rel="canonical" href="https://ton-domaine.com/" />
+
+
+  <!-- Perf: préconnecter les fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+  <!-- Fonts et Icônes -->
+  <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@1&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css" />
+
+
+  <!-- Open Graph (partage réseaux sociaux) -->
+  <meta property="og:title" content="La Plume Nomade" />
+  <meta property="og:description" content="Cabines thématiques immersives, librairie et voyages littéraires." />
+  <meta property="og:image" content="https://ton-domaine.com/og-image.jpg" />
+  <meta property="og:type" content="website" />
+</head>
+
+<header class="nav" role="banner">
+  <!-- Logo -->
+  <a class="nav__logo" href="file:///C:/Users/33753/Desktop/La%20Plume%20Nomade/Accueil/index.html" aria-label="Retour à l'accueil">
+    <img src="Photos/Logo1.png" alt="La Plume Nomade" width="40" height="40">
+  </a>
+
+  <!-- Liens centrés -->
+  <nav class="nav__center" aria-label="Menu principal">
+    <a href="file:///C:/Users/33753/Desktop/La%20Plume%20Nomade/Menu/index.html">Menu</a>
+    <a href="file:///C:/Users/33753/Desktop/La%20Plume%20Nomade/Librairie/index.html">Librairie</a>
+  </nav>
+
+  <!-- Icônes + bouton -->
+  <div class="nav__right">
+    <a href="#" aria-label="Favoris" class="ico"><i class="fa-regular fa-heart"></i></a>
+    <a href="#" aria-label="Panier" class="ico"><i class="fa-solid fa-cart-shopping"></i></a>
+    <a href="#" aria-label="Profil" class="ico"><i class="fa-regular fa-user"></i></a>
+
+    <a class="btn-contact" href="file:///C:/Users/33753/Desktop/La%20Plume%20Nomade/Contact/index.html">
+      Contact <span aria-hidden="true">→</span>
+    </a>
+  </div>
+
+  <!-- MENU BURGER (MOBILE) -->
+  <button class="burger" id="burger" aria-label="Ouvrir le menu mobile" aria-controls="mobileNav" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </button>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile"></nav>
+</header>
+
+
+  <!-- ===== CONTENU PRINCIPAL ===== -->
+  <main role="main">
+    <!-- ENTÊTE -->
+    <section class="main-header">
+      <div class="header-left">
+        <h2>
+          Des cabines comme des portails,<br />
+          Des livres comme des clés,<br />
+          Des lecteurs comme des voyageurs.
+        </h2>
+      </div>
+
+
+      <div class="header-right">
+        <img src="Photos/Logo.png" alt="Logo de La Plume Nomade" class="header-logo" width="220" height="220" loading="eager" />
+      </div>
+    </section>
+
+
+    <!-- SLOGAN -->
+    <section class="slogan">
+      <p class="subheading">
+        <strong>Un monde, une ambiance, une évasion</strong>
+        <span class="underline" aria-hidden="true"></span>
+      </p>
+    </section>
+
+
+    <!-- CABINES -->
+    <section class="cabins" aria-label="Sélection de cabines thématiques">
+      <article class="cabin-card">
+        <img src="Photos/cabine1.jpg" alt="Cabine Apaisée" loading="lazy" width="640" height="400">
+        <h3 class="green">La Plume Apaisée</h3>
+        <div class="tags">
+          <span class="tag">Zen</span>
+          <span class="tag">Relaxation</span>
+          <span class="icon"><i class="fa-solid fa-circle-down"></i></span>
+        </div>
+      </article>
+
+
+     <article class="cabin-card">
+  <img src="Photos/cabine2.jpg" alt="Cabine Soleil Levant" loading="lazy" width="640" height="400">
+  <h3 class="red">La Plume du Soleil Levant</h3>
+  <div class="tags">
+    <span class="tag">Japon</span>
+    <span class="tag">Manga</span>
+    <a href="C:/Users/33753/Desktop/La Plume Nomade/La plume soleil levant/Laplumedesoleillevant.html" class="icon">
+      <i class="fa-solid fa-circle-down"></i>
+    </a>
+  </div>
+</article>
+
+
+
+      <article class="cabin-card">
+        <img src="Photos/cabine3.jpg" alt="Cabine Enquêtrice" loading="lazy" width="640" height="400">
+        <h3>La Plume de l’Enquêtrice</h3>
+        <div class="tags">
+          <span class="tag">Détective</span>
+          <span class="tag">Vintage</span>
+          <span class="icon"><i class="fa-solid fa-circle-down"></i></span>
+        </div>
+      </article>
+    </section>
+  </main>
+<!-- SECTION POURQUOI NOUS CHOISIR -->
+<section class="why-choose-us">
+  <h2>Pourquoi nous choisir ?</h2>
+  <div class="choose-grid">
+    <div class="choose-item">
+      <i class="fa-solid fa-dollar-sign"></i>
+      <h3>Prix compétitifs</h3>
+      <p>
+        Nous offrons une expérience immersive unique à un tarif accessible,
+        pour que chacun puisse voyager à travers nos univers thématiques.
+      </p>
+    </div>
+    <div class="choose-item">
+      <i class="fa-solid fa-lock"></i>
+      <h3>Réservation simple et sécurisée</h3>
+      <p>
+        Réservez facilement votre cabine thématique en ligne, en toute sécurité,
+        en quelques clics seulement.
+      </p>
+    </div>
+    <div class="choose-item">
+      <i class="fa-solid fa-clock"></i>
+      <h3>Expérience fluide et immersive</h3>
+      <p>
+        De l’accueil chaleureux à la dégustation, chaque étape est pensée pour vous
+        faire vivre un moment hors du temps.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION NOTRE HISTOIRE -->
+<section class="our-history">
+  <div class="history-overlay">
+    <div class="history-text">
+      <h2>Notre Histoire</h2>
+      <p>
+        La Plume Nomade est née d’une passion <em>pour les voyages et les histoires</em>.
+        Nous avons voulu créer un lieu où chaque visiteur peut explorer des univers inspirés
+        du monde entier, tout en restant confortablement installé.
+      </p>
+    </div>
+    <div class="history-image">
+      <img src="Photos/Histoire.jpg" alt="Illustration Notre Histoire">
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-content">
+      <!-- Colonne 1 -->
+      <div class="footer-column">
+        <h4>La Plume Nomade</h4>
+        <p>Suivez-nous pour des escapades littéraires.</p>
+        <div class="footer-socials" aria-label="Réseaux sociaux">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+          <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-x-twitter" aria-hidden="true"></i></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+
+      <!-- Colonne 2 -->
+      <div class="footer-column footer-logo">
+        <a href="#top" aria-label="Remonter en haut de la page">
+          <img src="Photos/Logo1.png" alt="Logo de La Plume Nomade" width="120" height="120" loading="lazy">
+        </a>
+      </div>
+
+
+      <!-- Colonne 3 -->
+      <div class="footer-column">
+        <div class="footer-column1">
+          <h4>Newsletter</h4>
+          <form class="newsletter" aria-label="Inscription à la newsletter">
+            <label for="nl-email" class="sr-only">Adresse e-mail</label>
+            <input id="nl-email" name="EMAIL" type="email" placeholder="Adresse e-mail"
+                   autocomplete="email" inputmode="email" required>
+            <button type="submit" aria-label="S’abonner"><i class="fa-solid fa-arrow-right"></i></button>
+          </form>
+          <p class="newsletter-caption">Voyagez par les mots, restez informé.</p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="footer-bottom">
+      <p>© 2025 La Plume Nomade – Tous droits réservés</p>
+      <nav aria-label="Mentions légales">
+        <a href="/mentions-legales.html">Mentions légales</a> | 
+        <a href="/confidentialite.html">Politique de confidentialité</a> | 
+        <a href="/cgu.html">CGU</a>
+      </nav>
+    </div>
+  </footer>
+
+
+  <script src="index.js"></script>
+</body>
+</html>
+
+
+
+
+
