@@ -1,43 +1,140 @@
-//MENU BURGER 
-// Lorsque l'utilisateur clique sur l'icône du burger...
-document.getElementById("burger").addEventListener("click", function () {
-  
-  // On sélectionne le menu mobile et les éléments de navigation classiques
-  const mobileNav = document.getElementById("mobileNav");
-  const navElements = document.getElementById("navElements");
+/*
+===========================================================
+ MENU BURGER (version pour .nav avec .nav__center / .nav__right)
+-----------------------------------------------------------
+Ce script :
 
-  // On vide le contenu actuel du menu mobile (important si on rouvre plusieurs fois)
-  mobileNav.innerHTML = "";
+1) Récupère les éléments de ta nav :
+   - #burger        → le bouton hamburger (ouvert/fermé)
+   - #mobileNav     → le conteneur du menu déroulant mobile
+   - .nav__center   → les liens centraux (Menu, Librairie, etc.)
+   - .nav__right    → les icônes (favoris, panier, profil) + le bouton "Contact"
 
-  // On clone les 3 parties de la navigation : menu, icônes, bouton
-  const menu = navElements.querySelector(".nav-menu").cloneNode(true);         // liens "Les Cabines", "Menu", "Librarie"
-  const icons = navElements.querySelector(".nav-icons").cloneNode(true);       // icônes cœur et panier
-  const contact = navElements.querySelector(".btn-contact").cloneNode(true);   // bouton "Contact"
+2) Construit le contenu du menu mobile à l’ouverture :
+   - On CLONE .nav__center et .nav__right (pour garder les liens et icônes)
+   - On retire la classe sur le conteneur cloné (pas sur les enfants)
+     pour éviter d’embarquer la mise en page desktop (grille, gaps…)
+   - On injecte les clones dans #mobileNav, verticalement
 
-  // On ajoute les éléments dans le menu mobile, un en dessous de l'autre
-  mobileNav.appendChild(contact);
-  mobileNav.appendChild(icons);
-  mobileNav.appendChild(menu);
+3) Gère l’accessibilité et l’UX :
+   - aria-expanded sur le bouton burger
+   - Fermeture du menu si l’on clique en dehors, appuie sur Échap,
+     ou quand on clique sur un lien du menu
+   - Fermeture auto si l’écran repasse en desktop (> 1024px)
 
-  // On affiche ou masque le menu mobile avec la classe 'show'
-  mobileNav.classList.toggle("show");
-});
+Pré-requis dans ton HTML :
+- Un bouton :  <button id="burger" class="burger" aria-controls="mobileNav" aria-expanded="false">...</button>
+- Un menu mobile : <nav id="mobileNav" class="mobile-nav" aria-label="Menu mobile"></nav>
+- La nav version desktop : <nav class="nav__center">...</nav> et <div class="nav__right">...</div>
+===========================================================
+*/
+(function () {
+  // 1) Sélecteurs : on pointe les éléments nécessaires.
+  const burger    = document.getElementById("burger");       // Le bouton hamburger
+  const mobileNav = document.getElementById("mobileNav");    // Le conteneur du menu mobile (masqué/affiché)
+  const center    = document.querySelector(".nav__center");  // Les liens du centre (ex: Menu, Librairie)
+  const right     = document.querySelector(".nav__right");   // À droite : icônes + bouton "Contact"
 
-// Footer logo scroll vers le haute 
-  // On sélectionne tous les liens <a> qui ont comme destination l'ancre "#top"
-  document.querySelectorAll('a[href="#top"]').forEach(link => {
+  // Garde-fous : si un élément manque, on quitte (évite erreurs JS)
+  if (!burger || !mobileNav || !center || !right) return;
 
-    // Pour chaque lien trouvé, on ajoute un écouteur d'événement "click"
-    link.addEventListener('click', function(e) {
+  /*
+  -----------------------------------------------------------
+   buildMobileMenu()
+   - Construit le contenu du menu mobile à chaque ouverture
+   - On repart d'un conteneur vide pour être toujours à jour
+  -----------------------------------------------------------
+  */
+  function buildMobileMenu() {
+    // On nettoie d’abord le contenu si on rouvre plusieurs fois
+    mobileNav.innerHTML = "";
 
-      // On empêche le comportement par défaut du lien (c'est-à-dire le saut instantané vers le haut)
-      e.preventDefault();
+    // 1) CLONE des liens centraux
+    //    On clone en profondeur (true) pour récupérer les enfants (les <a>)
+    const centerClone = center.cloneNode(true);
 
-      // On déclenche un défilement fluide vers le haut de la page
-      window.scrollTo({
-        top: 0,               // On veut aller en haut de la page (position 0)
-        behavior: 'smooth'    // Animation fluide au lieu d’un saut brutal
-      });
+    // IMPORTANT : on retire la classe DU CONTENEUR cloné (pas des enfants)
+    // - But : ne pas garder sa mise en page desktop (flex centré, grands gaps…)
+    // - Les classes des <a> internes, .ico, .btn-contact… restent intactes
+    centerClone.className = "";
+
+    // On ajoute ce bloc en premier dans le menu mobile
+    mobileNav.appendChild(centerClone);
+
+    // 2) CLONE du bloc de droite (icônes + bouton contact)
+    const rightClone = right.cloneNode(true);
+    rightClone.className = ""; // même logique : on enlève la classe du conteneur seulement
+    mobileNav.appendChild(rightClone);
+
+    // 3) Fermer le menu quand on clique sur un lien (expérience utilisateur standard)
+    mobileNav.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => closeMenu());
     });
+  }
+
+  /*
+  -----------------------------------------------------------
+   openMenu() / closeMenu() / toggleMenu()
+   - Ouverture/fermeture visuelles + attribut ARIA pour accessibilité
+  -----------------------------------------------------------
+  */
+  function openMenu() {
+    buildMobileMenu();                           // On (re)construit le contenu
+    mobileNav.classList.add("show");            // Classe CSS qui affiche/annime
+    burger.setAttribute("aria-expanded", "true");
+  }
+
+  function closeMenu() {
+    mobileNav.classList.remove("show");
+    burger.setAttribute("aria-expanded", "false");
+  }
+
+  function toggleMenu() {
+    if (mobileNav.classList.contains("show")) closeMenu();
+    else openMenu();
+  }
+
+  // Clic sur le burger → on ouvre/ferme
+  burger.addEventListener("click", toggleMenu);
+
+  /*
+  -----------------------------------------------------------
+   Accessibilité / confort d’usage :
+   - Échap pour fermer
+   - Clic à l’extérieur pour fermer
+   - Fermeture auto quand on passe en desktop
+  -----------------------------------------------------------
+  */
+
+  // Touche Échap → ferme le menu s’il est ouvert
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeMenu();
   });
+
+  // Clic en dehors du menu → ferme (si ouvert)
+  document.addEventListener("click", (e) => {
+    if (!mobileNav.classList.contains("show")) return; // si déjà fermé, on ignore
+    const clickInsideMenu = mobileNav.contains(e.target);
+    const clickOnBurger   = burger.contains(e.target);
+    if (!clickInsideMenu && !clickOnBurger) closeMenu();
+  });
+
+  // Si on repasse en desktop (largeur > 1024px), on ferme le menu mobile
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1024) closeMenu();
+  });
+})();
+
+/*
+-----------------------------------------------------------
+  Scroll fluide vers le haut (#top)
+  - Pour tout lien <a href="#top">, on remonte la page en douceur
+-----------------------------------------------------------
+*/
+document.querySelectorAll('a[href="#top"]').forEach(link => {
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
 
